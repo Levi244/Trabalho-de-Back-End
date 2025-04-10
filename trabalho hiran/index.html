@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Manutenção</title>
+  <link rel="stylesheet" href="./arquivos CSS/style.css">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Registro de Solicitações de Manutenção</h1>
+    <textarea id="descricao" placeholder="Descrição do problema"></textarea>
+    <input type="text" id="responsavel" placeholder="Responsável">
+    <input type="date" id="prazo" class="prazo">
+    <button onclick="registrarSolicitacao()">Registrar Solicitação</button>
+
+    <div id="lista-solicitacoes"></div>
+  </div>
+
+  <script>
+    const lista = document.getElementById('lista-solicitacoes');
+
+    function registrarSolicitacao() {
+      const descricao = document.getElementById('descricao').value;
+      const responsavel = document.getElementById('responsavel').value;
+      const prazo = document.getElementById('prazo').value;
+
+      if (!descricao || !responsavel || !prazo) {
+        alert('Preencha todos os campos.');
+        return;
+      }
+
+      const div = document.createElement('div');
+      div.className = 'solicitacao';
+      div.innerHTML = `
+        <p><strong>Descrição:</strong> ${descricao}</p>
+        <p><strong>Responsável:</strong> ${responsavel}</p>
+        <p><strong>Prazo:</strong> ${new Date(prazo).toLocaleDateString()}</p>
+      `;
+
+      lista.appendChild(div);
+
+      document.getElementById('descricao').value = '';
+      document.getElementById('responsavel').value = '';
+      document.getElementById('prazo').value = '';
+    }
+  </script>
+</body>
+</html>
