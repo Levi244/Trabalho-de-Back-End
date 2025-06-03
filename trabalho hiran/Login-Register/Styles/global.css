@@ -1,0 +1,9 @@
+body{
+    font-family: 'Inter';
+    background-image: url('/Login-Register/IMG/Background.png')
+}
+
+button:hover{
+    background-color: skyblue;
+    cursor: pointer;
+}
